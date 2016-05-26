@@ -6,7 +6,7 @@
 /**
   This class implements a hello-world kioslave
  */
-class hello : public KIO::SlaveBase
+class hello : public QObject, public KIO::SlaveBase
 {
     Q_OBJECT
     public:
