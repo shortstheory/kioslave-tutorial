@@ -1,7 +1,7 @@
 #ifndef HELLO_H
 #define HELLO_H
 
-#include <kio/forwardingslavebase.h>
+#include <kio/slavebase.h>
 
 /**
   This class implements a hello-world kioslave
