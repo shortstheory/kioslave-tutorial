@@ -25,7 +25,7 @@ find_package(KF5KIO)
 target_link_libraries(kio_hello KF5::KIOCore KF5::KDELibs4Support)
 set_target_properties(kio_hello PROPERTIES OUTPUT_NAME "hello")
 
-install(TARGETS kio_hello DESTINATION /usr/lib/x86_64-linux-gnu/qt5/plugins/kf5/kio)
+install(TARGETS kio_hello DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/kio )
 
 ########### install files ###############
 
