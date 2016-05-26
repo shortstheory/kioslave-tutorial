@@ -1,0 +1,13 @@
+{
+    "KDE-KIO-Protocols" : {
+        "hello": {
+            "Class": ":local",
+            "X-DocPath": "kioslave5/kio_hello.html",
+            "exec": "kf5/kio/hello",
+            "input": "none",
+            "output": "filesystem",
+            "protocol": "hello",
+            "reading": true
+        }
+    }
+}
