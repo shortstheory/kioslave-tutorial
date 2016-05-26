@@ -1,7 +1,0 @@
-[Protocol]
-DocPath=kioslave/kio_hello.html
-exec=kio_hello
-input=none
-output=filesystem
-protocol=kio_hello
-reading=true
