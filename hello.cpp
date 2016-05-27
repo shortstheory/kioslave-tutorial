@@ -9,7 +9,7 @@ extern "C"
 {
     int Q_DECL_EXPORT kdemain( int argc, char **argv )
     {
-      qDebug() << "Entering function";
+      qDebug() << "Entering function.";
       ////KComponentData instance( "kio_hello" );
 
       if (argc != 4)
@@ -25,9 +25,9 @@ extern "C"
 
 void hello::get( const QUrl &url )
 {
-  qDebug() << "Entering function";
+  qDebug() << "Entering function.";
   mimeType( "text/plain" );
-  QByteArray str( "Hello_world" );
+  QByteArray str( "Hello pluto! ~kioslave\n" );
   data( str );
   finished();
   qDebug() << "Leaving function";
