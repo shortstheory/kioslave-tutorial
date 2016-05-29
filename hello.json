@@ -5,6 +5,17 @@
             "X-DocPath": "kioslave5/kio_hello.html",
             "exec": "kf5/kio/hello",
             "input": "none",
+            "listing": [
+                "Name",
+                "Type",
+                "Size",
+                "Date",
+                "Access",
+                "Owner",
+                "Group",
+                "Link",
+                ""
+            ],
             "output": "filesystem",
             "protocol": "hello",
             "reading": true

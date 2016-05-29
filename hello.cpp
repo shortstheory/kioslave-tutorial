@@ -9,7 +9,7 @@ extern "C"
 {
     int Q_DECL_EXPORT kdemain( int argc, char **argv )
     {
-      qDebug() << "Entering function.";
+      qDebug() << "main function.";
       ////KComponentData instance( "kio_hello" );
 
       if (argc != 4)
@@ -23,7 +23,7 @@ extern "C"
     }
 }
 
-void hello::get( const QUrl &url )
+/*void hello::get( const QUrl &url )
 {
   qDebug() << "Entering function.";
   mimeType( "text/plain" );
@@ -31,6 +31,11 @@ void hello::get( const QUrl &url )
   data( str );
   finished();
   qDebug() << "Leaving function";
+}*/
+
+void hello::listDir(const QUrl &url)
+{
+    KIO::SlaveBase::listDir(QUrl(url));
 }
 
 hello::hello( const QByteArray &pool, const QByteArray &app )

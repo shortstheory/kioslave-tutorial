@@ -11,7 +11,8 @@ class hello : public QObject, public KIO::SlaveBase
     Q_OBJECT
     public:
         hello( const QByteArray &pool, const QByteArray &app );
-        void get( const QUrl &url );
+        //void get( const QUrl &url );
+        void listDir(const QUrl& url) Q_DECL_OVERRIDE; //for listing
 };
 
 #endif
