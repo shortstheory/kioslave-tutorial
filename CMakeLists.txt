@@ -19,7 +19,7 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(ECMSetupVersion)
 include(FeatureSummary)
 add_library(kio_hello MODULE hello.cpp)
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED KIOCore)
+find_package(KF5KIO)
 target_link_libraries(kio_hello KF5::KIOCore)
 set_target_properties(kio_hello PROPERTIES OUTPUT_NAME "hello")
 

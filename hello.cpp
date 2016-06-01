@@ -1,12 +1,6 @@
 #include "hello.h"
 #include <QDebug>
 
-class KIOPluginForMetaData : public QObject
-{
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.kde.kio.slave.hello" FILE "hello.json")
-};
-
 extern "C"
 {
     int Q_DECL_EXPORT kdemain(int argc, char **argv)
@@ -30,10 +24,8 @@ void hello::get(const QUrl &url)
   QByteArray str( "Hello world!\n" );
   data(str);
   finished();
-  qDebug() << "Leaving function";
+  qDebug() << "Leaving function.";
 }
 
 hello::hello(const QByteArray &pool, const QByteArray &app)
 : SlaveBase("hello", pool, app) {}
-
-#include "hello.moc"

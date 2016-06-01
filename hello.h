@@ -6,9 +6,9 @@
 /**
   This class implements a Hello World kioslave
  */
-class hello : public QObject, public KIO::SlaveBase
+class hello : public KIO::SlaveBase
 {
-    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.kde.kio.slave.hello" FILE "hello.json");
     public:
         hello(const QByteArray &pool, const QByteArray &app);
         void get(const QUrl &url) Q_DECL_OVERRIDE;
