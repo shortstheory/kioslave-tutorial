@@ -36,13 +36,13 @@ extern "C"
         fprintf(stderr, "Usage: kio_hello protocol domain-socket1 domain-socket2\n");
         exit(-1);
       }
-      hello slave(argv[2], argv[3]);
+      Hello slave(argv[2], argv[3]);
       slave.dispatchLoop();
       return 0;
     }
 }
 
-void hello::get(const QUrl &url)
+void Hello::get(const QUrl &url)
 {
   qDebug() << "Entering function.";
   mimeType("text/plain");
@@ -52,7 +52,7 @@ void hello::get(const QUrl &url)
   qDebug() << "Leaving function";
 }
 
-hello::hello(const QByteArray &pool, const QByteArray &app)
+Hello::Hello(const QByteArray &pool, const QByteArray &app)
 : SlaveBase("hello", pool, app) {}
 
 #include "hello.moc"

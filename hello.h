@@ -25,11 +25,11 @@
 /**
   This class implements a Hello World kioslave
  */
-class hello : public QObject, public KIO::SlaveBase
+class Hello : public QObject, public KIO::SlaveBase
 {
     Q_OBJECT
     public:
-        hello(const QByteArray &pool, const QByteArray &app);
+        Hello(const QByteArray &pool, const QByteArray &app);
         void get(const QUrl &url) Q_DECL_OVERRIDE;
 };
 
