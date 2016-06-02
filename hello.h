@@ -28,9 +28,9 @@
 class Hello : public QObject, public KIO::SlaveBase
 {
     Q_OBJECT
-    public:
-        Hello(const QByteArray &pool, const QByteArray &app);
-        void get(const QUrl &url) Q_DECL_OVERRIDE;
+public:
+    Hello(const QByteArray &pool, const QByteArray &app);
+    void get(const QUrl &url) Q_DECL_OVERRIDE;
 };
 
 #endif

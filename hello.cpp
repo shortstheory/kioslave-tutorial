@@ -30,29 +30,28 @@ extern "C"
 {
     int Q_DECL_EXPORT kdemain(int argc, char **argv)
     {
-      qDebug() << "Launching KIO slave.";
-      if (argc != 4)
-      {
-        fprintf(stderr, "Usage: kio_hello protocol domain-socket1 domain-socket2\n");
-        exit(-1);
-      }
-      Hello slave(argv[2], argv[3]);
-      slave.dispatchLoop();
-      return 0;
+        qDebug() << "Launching KIO slave.";
+        if (argc != 4) {
+            fprintf(stderr, "Usage: kio_hello protocol domain-socket1 domain-socket2\n");
+            exit(-1);
+        }
+        Hello slave(argv[2], argv[3]);
+        slave.dispatchLoop();
+        return 0;
     }
 }
 
 void Hello::get(const QUrl &url)
 {
-  qDebug() << "Entering function.";
-  mimeType("text/plain");
-  QByteArray str( "Hello world!\n" );
-  data(str);
-  finished();
-  qDebug() << "Leaving function";
+    qDebug() << "Entering function.";
+    mimeType("text/plain");
+    QByteArray str("Hello world!\n");
+    data(str);
+    finished();
+    qDebug() << "Leaving function";
 }
 
 Hello::Hello(const QByteArray &pool, const QByteArray &app)
-: SlaveBase("hello", pool, app) {}
+    : SlaveBase("hello", pool, app) {}
 
 #include "hello.moc"
