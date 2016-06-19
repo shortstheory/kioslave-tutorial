@@ -2,7 +2,7 @@
 
 ##Project Structure
 
-Your source directory needs to have the following files:
+For the purpose of this tutorial, your project source directory needs to have the following files:
 
 + kio_hello.h
 + kio_hello.cpp
@@ -11,7 +11,7 @@ Your source directory needs to have the following files:
 
 ###hello.json
 
-The .json file replaces the .protocol files used in KIO slave pre KF5. The .json file for the KIO slave specifies the properties the KIO slave will have such as the executable path to the KIO slave on installation. The .json file also includes properties of the slave such as being able to read from, write to, delete from, among many others. Fields in this .json file are specified from the KProtocolManager class. For creating a KIO slave capable of showing a directory in a file manager such as Dolphin, the `listing` property must be set to `true`. An example of a skeletal .json file used for a KIO slave would look something like this:
+The .json file replaces the .protocol files used in KIO slaves pre KF5. The .json file for the KIO slave specifies the properties the KIO slave will have such as the executable path to the KIO slave on installation. The .json file also includes properties of the slave such as being able to read from, write to, delete from, among many others. Fields in this .json file are specified from the KProtocolManager class. For creating a KIO slave capable of showing a directory in a file manager such as Dolphin, the `listing` property must be set to `true`. As an example, the KIO slave used for the Hello KIO slave described in this tutorial looks like this:
 
 ```
 {
@@ -53,9 +53,9 @@ public:
 #endif
 ```
 
-The Hello KIO slave is derived from KIO::SlaveBase. The SlaveBase class has some basic functions already implemented for the KIO slave. I highly recommend going through the source code of SlaveBase to get an idea. However, most of the functions of SlaveBase are virtual functions and have to be re-implemented for the KIO slave. In this case, we are re-implementing the `get` function to print a QString when it is called by `kioclient5`.
+The Hello KIO slave is derived from KIO::SlaveBase. The SlaveBase class has some basic functions already implemented for the KIO slave. This can be found in the [documentation](https://api.kde.org/frameworks/kio/html/classKIO_1_1SlaveBase.html). However, most of the functions of SlaveBase are virtual functions and have to be re-implemented for the KIO slave. In this case, we are re-implementing the `get` function to print a QString when it is called by `kioclient5`.
 
-In case you don't need too much special handling of the KIO slave's functions, you can derive your KIO slave class directly from KIO::ForwardingSlaveBase. Here, you would only need to re-implement the `rewriteUrl` function to get your KIO slave off the ground.
+In case you don't need special handling of the KIO slave's functions, you can derive your KIO slave class directly from [KIO::ForwardingSlaveBase](http://api.kde.org/frameworks-api/frameworks5-apidocs/frameworks/kio/html/classKIO_1_1ForwardingSlaveBase.html). Here, you would only need to re-implement the `rewriteUrl` function to get your KIO slave working.
 
 ###kio_hello.cpp
 
@@ -100,6 +100,8 @@ Hello::Hello(const QByteArray &pool, const QByteArray &app)
 #include "hello.moc"
 ```
 
+The .moc file is, of course, auto-generated at compilation time.
+
 As mentioned earlier, the KIO Slave's .cpp file will also require a new KIOPluginForMetaData class to add the .json file. The following is used for the hello KIO slave and can be used as an example:
 
 ```
@@ -109,8 +111,6 @@ class KIOPluginForMetaData : public QObject
     Q_PLUGIN_METADATA(IID "org.kde.kio.slave.hello" FILE "hello.json")
 };
 ```
-
-The .moc file, is of course, auto-generated at compilation time.
 
 ###CMakeLists.txt
 
@@ -153,7 +153,7 @@ sudo make install
 kdeinit5
 ```
 
-We have to run kdeinit5 again so the new KIO slave is discovered by KLauncher and can be loaded when we run a command such as kioclient5.
+As shown above, we have to run kdeinit5 again so the new KIO slave is discovered by KLauncher and can be loaded when we run a command through an application such as kioclient5.
 
 ##Testing
 
